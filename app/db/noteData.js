@@ -1,7 +1,6 @@
 // ===============================================================================
 // DATA
 // Below data will hold all notes.
-
 var noteArray = [
   {
     title: "Title",
@@ -9,5 +8,5 @@ var noteArray = [
   }
 ];
 
-// This makes the array accessible to other files using require.
+// This makes the note array accessible to other files using require.
 module.exports = noteArray;
