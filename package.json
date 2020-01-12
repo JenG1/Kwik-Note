@@ -1,11 +1,29 @@
 {
   "name": "kwik-note",
-  "version": "1.0.1",
-  "description": "",
-  "main": "server.js",
-  "author": "",
-  "license": "ISC",
+  "version": "1.0.0",
+  "description": "Note taking app.",
+  "main": "\u001b[D\u001b[D\u001b[D\u001bserver.js)",
   "dependencies": {
     "express": "^4.17.1"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JenG1/Kwik-Note.git"
+  },
+  "keywords": [
+    "Note",
+    "App"
+  ],
+  "author": "Jennifer Genes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JenG1/Kwik-Note/issues"
+  },
+  "homepage": "https://github.com/JenG1/Kwik-Note#readme"
 }
