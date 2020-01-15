@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.1.3/flatly/bootstrap.min.css" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
     integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css"href="assets/css/styles.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/styles.css">
 
 </head>
 
@@ -57,22 +57,9 @@
       console.log(note);
       $.post("/api/notes", note)
         .then((data) => {
-
           alert("Saved!");
           clearForm();
-        });
-      // let currentURL = window.location.origin;
-
-      // $.ajax({url:currentURL +"/api/notes",method:"GET"})
-      //   .done(function(noteData){
-      //     for (var i =0; i < note.length; i++){
-      //     console.log(note[i]);
-      //     let uniqueID = i + 1;
-      //     this.note.push(uniqueID);
-      //     console.log(this.note);
-      // }
-      //   })
-      
+        });      
     })
     function clearForm() {
       document.getElementById("myForm").reset();
