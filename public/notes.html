@@ -18,9 +18,8 @@
     <a class="navbar-brand" href="/">Note Taker
     </a>
     <div class="icons">
-      <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off"
-        style="background-color:#3CB371;"><i class="fas fa-save text-light save-note"></i></button>
-
+      <i class="fas fa-save text-light save-note"></i>
+      <i class="fas fa-pen text-light new-note"></i>
     </div>
   </nav>
   <div class="container-fluid">
@@ -46,7 +45,7 @@
     </div>
   </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <!-- <script src="./assets/js/index.js"></script> -->
+  <script src="./assets/js/index.js"></script>
   <script>
     $('.save-note').on('click', (event) => {
       event.preventDefault();
@@ -58,9 +57,13 @@
       $.post("/api/notes", note)
         .then((data) => {
           alert("Saved!");
-          clearForm();
         });      
     })
+    $('.new-note').on('click', (event) => {
+      event.preventDefault();
+          clearForm();    
+    })
+
     function clearForm() {
       document.getElementById("myForm").reset();
     }

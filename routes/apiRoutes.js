@@ -1,47 +1,30 @@
+// Import express and path modules
+let path = require('path');
+let fs = require('fs');
 // LOAD DATA
-let noteData = require("../db/noteData.js");
-// ROUTING
+let noteData = [];
 module.exports = function (app) {
-  // API GET Requests
-  // Below code handles when users "visit" a page.
-  // In each of the below cases when a user visits a links
-
-  app.get("/api/notes", (req, res) => {
-    res.json(noteData);
+  // ROUTES
+  app.get('/api/notes', (req, res) => {
+    res.sendFile(path.join(__dirname, "/../db/db.json"))
   });
-
-  // POST Requests
-  app.post("/api/notes",(req, res)=> {
-      noteData.push(req.body);
-      res.json(true);
-      console.log("Note updated");
-  });
-
   app.post("/api/notes", (req, res) => {
     var newNote = req.body;
+    // console.log(newNote);
     if (noteData.length == 0) {
-      newNote.id = 1
-    } else newNote.id = noteData[noteData.length - 1].id + 1;
-    console.log(newNote);
-    noteData.push(newNote)
-    fs.writeFileSync(path.join(__dirname, "../db/noteData.json"), JSON.stringify(noteData))
-    res.send(newNote);
-  });
-  //Query parameter containing the id of a note to delete.
-  app.post("/api/notes/:id", (req, res) => {
-    // Empty out the arrays of data
-    noteData.length = 0;
-    res.json({ ok: true });
-  });
-};
+        newNote.id = 1;
+    } else {
+        newNote.id = noteData[noteData.length - 1].id + 1;
+    }
 
-// app.post("/api/notes", (req, res) => {
-//   var newNote = req.body;
-//   if (notes.length == 0) {
-//     newNote.id = 1
-//   } else newNote.id = notes[notes.length - 1].id + 1;
-//   console.log(newNote);
-//   notes.push(newNote)
-//   fs.writeFileSync(path.join(__dirname, "../db/noteData.json"), JSON.stringify(notes))
-//   res.send(newNote);
-// }); 
+    noteData.push(newNote);
+    console.log(noteData);
+    fs.writeFileSync(path.join(__dirname + '/../db/db.json'), JSON.stringify(noteData));
+    res.send(noteData);
+
+    // fs.readFileSync(path.join(__dirname + '/db/db.json'), (err, data) => {
+    //     if (err) throw (err);
+    //     // let json = [JSON.parse(data)];
+    //     // json.push('{title:"how you doin", text:"Im Guud"}');
+    // })
+})}
